@@ -3839,6 +3839,9 @@ endfunction
 
 " tagbar#ForceUpdate() {{{2
 function! tagbar#ForceUpdate() abort
+    if !exists('t:tagbar_buf_name')
+        return
+    endif
     if !exists('b:tagbar_force_update')
         let b:tagbar_force_update = 1
         call s:AutoUpdate(fnamemodify(expand('%'), ':p'), 1)
